@@ -1,0 +1,45 @@
+name: Release
+
+# Push a version tag (git tag v0.1.0 && git push origin v0.1.0): builds the Linux bundle and
+# publishes it as a GitHub release, with notes generated from the commits since the last one.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  linux:
+    # Pinned, not ubuntu-latest: the bundle needs the glibc of the build system or newer,
+    # an older build image keeps it running on more distributions.
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Linux build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+      - run: dart run build_runner build -d
+      - run: flutter build linux --release
+
+      - name: Package
+        run: |
+          name="pipewire-gui-${GITHUB_REF_NAME}-linux-x64"
+          cp -r build/linux/x64/release/bundle "$name"
+          tar -czf "$name.tar.gz" "$name"
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "pipewire-gui-${GITHUB_REF_NAME}-linux-x64.tar.gz" \
+            --title "$GITHUB_REF_NAME" --generate-notes

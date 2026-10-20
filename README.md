@@ -50,6 +50,19 @@ On Debian / Ubuntu / Kubuntu:
 sudo apt install pipewire-bin wireplumber pulseaudio-utils
 ```
 
+## Install
+
+Download `pipewire-gui-<version>-linux-x64.tar.gz` from
+[Releases](https://github.com/alessioservetti/pipewire-gui/releases), extract it and run
+`pipewire_gui`:
+
+```sh
+tar -xzf pipewire-gui-v0.1.0-linux-x64.tar.gz
+./pipewire-gui-v0.1.0-linux-x64/pipewire_gui
+```
+
+Built on Ubuntu 24.04 (x86_64): it runs on distributions with glibc 2.39 or newer.
+
 ## Build
 
 A recent stable Flutter SDK (Dart 3.10 or newer) and the Linux desktop toolchain:
