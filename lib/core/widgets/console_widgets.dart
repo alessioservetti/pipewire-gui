@@ -703,8 +703,8 @@ void showConsoleError(BuildContext context, Object error) {
               accent: ConsoleColors.dangerSoft,
               accentBackground: ConsoleColors.dangerContainer,
               title: 'Command failed',
-              children: [ConsoleCodeBlock(text: '$error')],
               actions: [ConsoleButton(label: 'Close', onPressed: () => Navigator.of(context).pop())],
+              children: [ConsoleCodeBlock(text: '$error')],
             ),
           );
         }

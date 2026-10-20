@@ -215,7 +215,7 @@ class GraphClockDialog extends ConsumerWidget {
   /// sorted.
   static List<int> _withCurrent(Iterable<int> options, int? current) => {
     ...options,
-    if (current != null) current,
+    ?current,
   }.toList()..sort();
 
   /// Within the min..max quantum PipeWire checks force-quantum against (unknown bounds: no limit).
