@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=PipeWire GUI
+Comment=Patchbay for PipeWire / WirePlumber
+Exec=@BUNDLE@/@BINARY@
+Icon=pipewire-gui
+Terminal=false
+Categories=AudioVideo;Audio;Mixer;
+StartupWMClass=@APP_ID@

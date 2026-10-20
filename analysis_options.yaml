@@ -1,0 +1,12 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - build/**
+    - linux/**
+
+# riverpod_lint is an analyzer plugin (Dart >= 3.10): no pubspec entry needed.
+plugins:
+  riverpod_lint: ^3.1.9
