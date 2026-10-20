@@ -9,6 +9,8 @@ Everything goes through the standard PipeWire command line tools: no daemon, no 
 module, nothing to configure. What the app shows is what `pw-dump` and the PipeWire profiler
 report.
 
+![Patchbay](docs/screenshots/patchbay.png)
+
 ## Features
 
 **Patchbay**
@@ -38,6 +40,10 @@ report.
 - Rate of every running driver.
 - Forced rate, allowed rates, default rate.
 - Forced quantum, quantum, min and max quantum.
+
+| New node | Graph clock |
+|---|---|
+| ![New node](docs/screenshots/new-node.png) | ![Graph clock](docs/screenshots/graph-clock.png) |
 
 ## Requirements
 
